@@ -3,3 +3,4 @@ All*
 train/
 val/
 data/
+*.pyc
