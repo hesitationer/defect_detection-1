@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-A combination of COVNET AND RNN nets for Lang Detection
+A COVNET for Defect Detection
 @Author: Sahil Badyal
 """
 
