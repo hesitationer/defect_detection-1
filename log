@@ -1,0 +1,191 @@
+2018-05-29 22:10:21,767:INFO: Building model...
+2018-05-29 22:10:30,407:WARNING: From /home/sbad/defect_detection/models/covnet.py:181: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See @{tf.nn.softmax_cross_entropy_with_logits_v2}.
+
+2018-05-29 22:10:30,711:INFO: took 8.94 seconds
+2018-05-29 22:10:31,181:INFO: Epoch 1 out of 40
+2018-05-29 22:10:54,776:INFO: Building model...
+2018-05-29 22:10:55,361:INFO: took 0.58 seconds
+2018-05-29 22:10:55,482:INFO: Epoch 1 out of 40
+2018-05-29 22:36:51,216:INFO: Building model...
+2018-05-29 22:37:03,078:INFO: took 11.85 seconds
+2018-05-29 22:37:04,036:INFO: Epoch 1 out of 40
+2018-05-29 22:40:45,589:INFO: Building model...
+2018-05-29 22:40:56,438:INFO: took 10.84 seconds
+2018-05-29 22:40:57,015:INFO: Epoch 1 out of 40
+2018-05-29 22:42:44,685:INFO: Building model...
+2018-05-29 22:42:53,743:INFO: took 9.06 seconds
+2018-05-29 22:42:53,953:INFO: Epoch 1 out of 40
+2018-05-29 23:20:25,339:INFO: Building model...
+2018-05-29 23:20:35,849:INFO: took 10.50 seconds
+2018-05-29 23:20:36,422:INFO: Epoch 1 out of 40
+2018-05-29 23:22:36,960:INFO: Building model...
+2018-05-29 23:24:16,724:INFO: Building model...
+2018-05-29 23:25:06,485:INFO: Building model...
+2018-05-29 23:25:07,122:INFO: took 0.64 seconds
+2018-05-29 23:25:07,596:INFO: Epoch 1 out of 40
+2018-05-29 23:25:58,006:INFO: Building model...
+2018-05-29 23:26:24,637:INFO: took 26.58 seconds
+2018-05-29 23:26:25,491:INFO: Epoch 1 out of 40
+2018-05-29 23:36:11,979:INFO: Building model...
+2018-05-29 23:36:50,585:INFO: Building model...
+2018-05-29 23:36:59,476:INFO: took 8.89 seconds
+2018-05-29 23:36:59,922:INFO: Epoch 1 out of 40
+2018-05-29 23:37:53,966:INFO: Epoc loss after epoch 0 = 17.96
+2018-05-29 23:37:53,966:INFO: Evaluating on development data
+2018-05-29 23:37:56,548:INFO: Mean Val loss  = 0.36 
+2018-05-29 23:37:56,554:DEBUG: Lang-level confusion matrix:
+go\gu	TH   	SM   	SD   	WR   	OKF  	OKB  
+TH   	2.00 	0.00 	0.00 	0.00 	0.00 	0.00 
+SM   	0.00 	2.00 	0.00 	0.00 	0.00 	0.00 
+SD   	0.00 	0.00 	2.00 	0.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	2.00 	0.00 	0.00 
+OKF  	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKB  	0.00 	0.00 	0.00 	0.00 	0.00 	2.00 
+
+2018-05-29 23:37:56,555:DEBUG: Lang-level scores:
+label	acc  	prec 	rec  	f1   
+TH   	1.00 	1.00 	1.00 	1.00 
+SM   	1.00 	1.00 	1.00 	1.00 
+SD   	1.00 	1.00 	1.00 	1.00 
+WR   	1.00 	1.00 	1.00 	1.00 
+OKF  	1.00 	1.00 	1.00 	1.00 
+OKB  	1.00 	1.00 	1.00 	1.00 
+micro	1.00 	1.00 	1.00 	1.00 
+macro	1.00 	1.00 	1.00 	1.00 
+not-O	1.00 	1.00 	1.00 	1.00 
+
+2018-05-29 23:37:56,555:INFO: Epoch 2 out of 40
+2018-05-29 23:38:48,914:INFO: Epoc loss after epoch 1 = 0.26
+2018-05-29 23:38:48,914:INFO: Evaluating on development data
+2018-05-29 23:38:51,365:INFO: Mean Val loss  = 0.07 
+2018-05-29 23:38:51,375:DEBUG: Lang-level confusion matrix:
+go\gu	TH   	SM   	SD   	WR   	OKF  	OKB  
+TH   	2.00 	0.00 	0.00 	0.00 	0.00 	0.00 
+SM   	0.00 	2.00 	0.00 	0.00 	0.00 	0.00 
+SD   	0.00 	0.00 	2.00 	0.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	2.00 	0.00 	0.00 
+OKF  	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKB  	0.00 	0.00 	0.00 	0.00 	0.00 	2.00 
+
+2018-05-29 23:38:51,376:DEBUG: Lang-level scores:
+label	acc  	prec 	rec  	f1   
+TH   	1.00 	1.00 	1.00 	1.00 
+SM   	1.00 	1.00 	1.00 	1.00 
+SD   	1.00 	1.00 	1.00 	1.00 
+WR   	1.00 	1.00 	1.00 	1.00 
+OKF  	1.00 	1.00 	1.00 	1.00 
+OKB  	1.00 	1.00 	1.00 	1.00 
+micro	1.00 	1.00 	1.00 	1.00 
+macro	1.00 	1.00 	1.00 	1.00 
+not-O	1.00 	1.00 	1.00 	1.00 
+
+2018-05-29 23:38:51,376:INFO: Epoch 3 out of 40
+2018-05-29 23:39:43,650:INFO: Epoc loss after epoch 2 = 0.03
+2018-05-29 23:39:43,650:INFO: Evaluating on development data
+2018-05-29 23:39:46,100:INFO: Mean Val loss  = 0.00 
+2018-05-29 23:39:46,105:DEBUG: Lang-level confusion matrix:
+go\gu	TH   	SM   	SD   	WR   	OKF  	OKB  
+TH   	2.00 	0.00 	0.00 	0.00 	0.00 	0.00 
+SM   	0.00 	2.00 	0.00 	0.00 	0.00 	0.00 
+SD   	0.00 	0.00 	2.00 	0.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	2.00 	0.00 	0.00 
+OKF  	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKB  	0.00 	0.00 	0.00 	0.00 	0.00 	2.00 
+
+2018-05-29 23:39:46,106:DEBUG: Lang-level scores:
+label	acc  	prec 	rec  	f1   
+TH   	1.00 	1.00 	1.00 	1.00 
+SM   	1.00 	1.00 	1.00 	1.00 
+SD   	1.00 	1.00 	1.00 	1.00 
+WR   	1.00 	1.00 	1.00 	1.00 
+OKF  	1.00 	1.00 	1.00 	1.00 
+OKB  	1.00 	1.00 	1.00 	1.00 
+micro	1.00 	1.00 	1.00 	1.00 
+macro	1.00 	1.00 	1.00 	1.00 
+not-O	1.00 	1.00 	1.00 	1.00 
+
+2018-05-29 23:39:46,106:INFO: Epoch 4 out of 40
+2018-05-29 23:41:39,704:INFO: Building model...
+2018-05-29 23:41:40,228:INFO: took 0.52 seconds
+2018-05-29 23:41:40,362:INFO: Epoch 1 out of 40
+2018-05-29 23:42:07,508:INFO: Epoc loss after epoch 0 = 20.24
+2018-05-29 23:42:07,509:INFO: Evaluating on development data
+2018-05-29 23:42:09,119:INFO: Mean Val loss  = 0.72 
+2018-05-29 23:42:09,127:DEBUG: Lang-level confusion matrix:
+go\gu	TH   	SM   	SD   	WR   	OKF  	OKB  
+TH   	2.00 	0.00 	0.00 	0.00 	0.00 	0.00 
+SM   	0.00 	2.00 	0.00 	0.00 	0.00 	0.00 
+SD   	1.00 	0.00 	1.00 	0.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKF  	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKB  	0.00 	0.00 	0.00 	0.00 	0.00 	2.00 
+
+2018-05-29 23:42:09,128:DEBUG: Lang-level scores:
+label	acc  	prec 	rec  	f1   
+TH   	0.00 	0.00 	1.00 	0.00 
+SM   	1.00 	1.00 	1.00 	1.00 
+SD   	0.00 	1.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	0.00 
+OKF  	0.00 	0.00 	1.00 	0.00 
+OKB  	1.00 	1.00 	1.00 	1.00 
+micro	0.92 	0.75 	0.75 	0.75 
+macro	0.33 	0.50 	0.67 	0.33 
+not-O	0.90 	0.70 	0.70 	0.70 
+
+2018-05-29 23:42:09,128:INFO: Epoch 2 out of 40
+2018-05-29 23:42:36,123:INFO: Epoc loss after epoch 1 = 4.24
+2018-05-29 23:42:36,123:INFO: Evaluating on development data
+2018-05-29 23:42:37,773:INFO: Mean Val loss  = 0.66 
+2018-05-29 23:42:37,785:DEBUG: Lang-level confusion matrix:
+go\gu	TH   	SM   	SD   	WR   	OKF  	OKB  
+TH   	2.00 	0.00 	0.00 	0.00 	0.00 	0.00 
+SM   	0.00 	2.00 	0.00 	0.00 	0.00 	0.00 
+SD   	1.00 	0.00 	1.00 	0.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	2.00 	0.00 	0.00 
+OKF  	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKB  	0.00 	0.00 	0.00 	0.00 	0.00 	2.00 
+
+2018-05-29 23:42:37,787:DEBUG: Lang-level scores:
+label	acc  	prec 	rec  	f1   
+TH   	0.00 	0.00 	1.00 	0.00 
+SM   	1.00 	1.00 	1.00 	1.00 
+SD   	0.00 	1.00 	0.00 	0.00 
+WR   	1.00 	1.00 	1.00 	1.00 
+OKF  	1.00 	1.00 	1.00 	1.00 
+OKB  	1.00 	1.00 	1.00 	1.00 
+micro	0.97 	0.92 	0.92 	0.92 
+macro	0.67 	0.83 	0.83 	0.67 
+not-O	0.97 	0.90 	0.90 	0.90 
+
+2018-05-29 23:42:37,787:INFO: Epoch 3 out of 40
+2018-05-29 23:43:04,761:INFO: Epoc loss after epoch 2 = 0.28
+2018-05-29 23:43:04,761:INFO: Evaluating on development data
+2018-05-29 23:43:06,401:INFO: Mean Val loss  = 0.00 
+2018-05-29 23:43:06,409:DEBUG: Lang-level confusion matrix:
+go\gu	TH   	SM   	SD   	WR   	OKF  	OKB  
+TH   	2.00 	0.00 	0.00 	0.00 	0.00 	0.00 
+SM   	0.00 	2.00 	0.00 	0.00 	0.00 	0.00 
+SD   	0.00 	0.00 	2.00 	0.00 	0.00 	0.00 
+WR   	0.00 	0.00 	0.00 	2.00 	0.00 	0.00 
+OKF  	0.00 	0.00 	0.00 	0.00 	2.00 	0.00 
+OKB  	0.00 	0.00 	0.00 	0.00 	0.00 	2.00 
+
+2018-05-29 23:43:06,410:DEBUG: Lang-level scores:
+label	acc  	prec 	rec  	f1   
+TH   	1.00 	1.00 	1.00 	1.00 
+SM   	1.00 	1.00 	1.00 	1.00 
+SD   	1.00 	1.00 	1.00 	1.00 
+WR   	1.00 	1.00 	1.00 	1.00 
+OKF  	1.00 	1.00 	1.00 	1.00 
+OKB  	1.00 	1.00 	1.00 	1.00 
+micro	1.00 	1.00 	1.00 	1.00 
+macro	1.00 	1.00 	1.00 	1.00 
+not-O	1.00 	1.00 	1.00 	1.00 
+
+2018-05-29 23:43:06,410:INFO: Epoch 4 out of 40
