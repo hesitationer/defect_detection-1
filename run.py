@@ -5,7 +5,7 @@ from models import util as utils
 print ("==> parsing input arguments")
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--network', type=str, default="ld_covnet_rnn_augm", help='embeding size (50, 100, 200, 300 only)')
+parser.add_argument('--network', type=str, default="covnet", help='embeding size (50, 100, 200, 300 only)')
 parser.add_argument('--mode', type=str, default="train", help='Can be train or predict')
 parser.add_argument('--epochs', type=int, default=1, help='number of epochs to train')
 parser.add_argument('--batch_size', type=int, default=4, help='no commment')

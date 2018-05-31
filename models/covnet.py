@@ -180,7 +180,7 @@ class COVNETModel(DefectDetectionModel):
         Returns:
             loss: A 0-d tensor (scalar)
         """
-        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=self.labels_placeholder,logits=preds))
+        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=self.labels_placeholder,logits=preds))
         tf.summary.scalar('loss',loss)
         return loss
 
@@ -260,7 +260,7 @@ class COVNETModel(DefectDetectionModel):
         builder = tf.saved_model.builder.SavedModelBuilder(export_path)
 
         tensor_info_x = tf.saved_model.utils.build_tensor_info(self.input_placeholder)
-        tensor_info_y = tf.saved_model.utils.build_tensor_info(self.labels_placeholder)
+        tensor_info_y = tf.saved_model.utils.build_tensor_info(self.pred)
 
         prediction_signature = (
         tf.saved_model.signature_def_utils.build_signature_def(
@@ -288,7 +288,6 @@ class COVNETModel(DefectDetectionModel):
         self.dropout_placeholder = None
         self.isTraining = None
         self.shapeOfCNN1 = None
-        
 
         self.build()
 
