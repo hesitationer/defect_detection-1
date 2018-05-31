@@ -9,6 +9,7 @@ import logging
 import sys
 import time
 from datetime import datetime
+import os
 
 import tensorflow as tf
 import numpy as np
@@ -17,6 +18,7 @@ from models import  data_util
 from models.defs import LBLS
 from models.data_util import getModelHelper
 from models.defect_detection_model import DefectDetectionModel
+import shutil
 
 logger = logging.getLogger("ld.cov.rnn")
 logger.setLevel(logging.DEBUG)
@@ -37,6 +39,9 @@ class Config:
     n_epochs = 40
     lr = 0.001
     png_folder = ''
+    export_path_base = ''
+    model_version = 1
+    MODEL_SIGNATURE_NAME = 'predict_defect'
 
     def __init__(self, args):
 
@@ -49,6 +54,10 @@ class Config:
             #self.eval_output = self.output_path + "results.txt"
             self.log_output = self.output_path + "log"
             self.png_folder = args['png_folder']
+            self.export_path_base = args['export_path']
+            self.model_version = args['model_version']
+            self.batch_size  = args['batch_size']
+            self.n_epochs = args['epochs']
 
 class COVNETModel(DefectDetectionModel):
     """
@@ -241,6 +250,35 @@ class COVNETModel(DefectDetectionModel):
         _, loss,_summary = sess.run([self.train_op, self.loss,self.summary], feed_dict=feed)
         return loss,_summary
 
+    def export(self,sess):
+        export_path = os.path.join(tf.compat.as_bytes(self.config.export_path_base), tf.compat.as_bytes(str(self.config.model_version)))
+        try:
+            shutil.rmtree(export_path)
+        except OSError, e:
+            print ("Error: %s - %s." % (e.filename,e.strerror))
+        print 'Exporting trained model to', export_path
+        builder = tf.saved_model.builder.SavedModelBuilder(export_path)
+
+        tensor_info_x = tf.saved_model.utils.build_tensor_info(self.input_placeholder)
+        tensor_info_y = tf.saved_model.utils.build_tensor_info(self.labels_placeholder)
+
+        prediction_signature = (
+        tf.saved_model.signature_def_utils.build_signature_def(
+          inputs={'image': tensor_info_x},
+          outputs={'label': tensor_info_y},
+          method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME))
+
+        legacy_init_op = tf.group(tf.tables_initializer(), name='legacy_init_op')
+        builder.add_meta_graph_and_variables(
+        sess, [tf.saved_model.tag_constants.SERVING],
+        signature_def_map={
+          self.config.MODEL_SIGNATURE_NAME:
+              prediction_signature,
+        },
+        legacy_init_op=legacy_init_op)
+
+        builder.save()
+
     def __init__(self, helper, config):
         super(COVNETModel, self).__init__(helper, config)
 
@@ -250,9 +288,6 @@ class COVNETModel(DefectDetectionModel):
         self.dropout_placeholder = None
         self.isTraining = None
         self.shapeOfCNN1 = None
-        self.shapeOfCNN2 = None
-        #self.shapeOfCNN3 = None
-        #self.shapeOfCNN4 = None
         
 
         self.build()
@@ -295,24 +330,11 @@ def do_train(args):
             session.run(init)
             model.setSummaryWriters(session)
             model.fit(session, saver, train, dev)
-            #if report:
-            #    report.log_output(model.output(session, dev))
-            #    report.save()
-            #else:
-                # Save predictions in a text file.
-            #    output = model.output(session, dev)
-            #    images, labels, predictions = zip(*output)
-            #    predictions = [[LBLS[l] for l in preds] for preds in predictions]
-            #    output = zip(images, labels, predictions)
-
-            #    with open(model.config.conll_output, 'w') as f:
-            #        write_csv(f, output)
-                #with open(model.config.eval_output, 'w') as f:
-                #    for sentence, labels, predictions in output:
-                #        print_sentence(f, sentence, labels, predictions)
+            model.export(session)
+            logger.info("Successfully exported")
 
 def name():
-        return "2LCOVNETModel"
+        return "1LCOVNETModel"
 
 def do_evaluate(args):
     config = Config(args)
