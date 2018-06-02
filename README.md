@@ -3,12 +3,12 @@
 This project contains code to detect a defefct in a mechanical part
 
 Clone this project 
-'''
-git clone https://github.com/sahilbadyal/defect_detection.git
-'''
 ```
-Notations = 
+git clone https://github.com/sahilbadyal/defect_detection.git
+```
 
+Notations = 
+```
 OKB -> Ok Back
 OKF -> Ok Front
 SM  -> Scratch Mark
@@ -17,7 +17,7 @@ WR  -> Wrinkling
 TH  -> Thinning
 ```
 
-##How to run client ?
+## How to run client ?
 
 ```
 cd client
