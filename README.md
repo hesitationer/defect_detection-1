@@ -23,8 +23,10 @@ TH  -> Thinning
 cd client
 ```
 Now set up a test file in config class in defect_detection_client.py
+```
 png_folder='../All_61326/test_61326/' -> This is the folder where the png/jpegs will reside
 test_csv='../test.csv' -> The test File (contains name of files)
+```
 
 Run client
 
