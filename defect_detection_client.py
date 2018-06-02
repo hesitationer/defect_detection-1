@@ -21,7 +21,7 @@ import time
 from google.protobuf.json_format import MessageToJson
 
 
-tf.app.flags.DEFINE_string('server', '10.10.17.221:9003',
+tf.app.flags.DEFINE_string('server', '104.197.112.172:8080',
                            'PredictionService host:port')
 FLAGS = tf.app.flags.FLAGS
 
