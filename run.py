@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--network', type=str, default="covnet", help='embeding size (50, 100, 200, 300 only)')
 parser.add_argument('--mode', type=str, default="train", help='Can be train or predict')
-parser.add_argument('--epochs', type=int, default=1, help='number of epochs to train')
+parser.add_argument('--epochs', type=int, default=3, help='number of epochs to train')
 parser.add_argument('--batch_size', type=int, default=4, help='no commment')
 parser.add_argument('--save_every', type=int, default=50000, help='save state every x iteration')
 parser.add_argument('--dropout', type=float, default=0.0, help='dropout rate (between 0 and 1)')

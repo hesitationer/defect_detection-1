@@ -11,9 +11,9 @@ import tensorflow as tf
 
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2
-from models.data_util import getModelHelper
-from models import util
-from models.defs import LBLS
+from data_util import getModelHelper
+import util
+from defs import LBLS
 import numpy as np
 import json
 from pprint import pprint
@@ -21,7 +21,7 @@ import time
 from google.protobuf.json_format import MessageToJson
 
 
-tf.app.flags.DEFINE_string('server', '104.197.112.172:8080',
+tf.app.flags.DEFINE_string('server', '104.197.112.172:80',
                            'PredictionService host:port')
 FLAGS = tf.app.flags.FLAGS
 
@@ -36,7 +36,8 @@ class Config:
         x_features=1040
         y_features=780
         n_classes=6
-        png_folder='./data/'
+        png_folder='../All_61326/test_61326/'
+        test_csv='../test.csv'
 
 
 def main(_):
@@ -46,18 +47,19 @@ def main(_):
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
   
   val_list = None
+  
+  config = Config()
 
-  with open('./valEqual.csv', "r") as val_listfile:
+
+  with open(config.test_csv, "r") as val_listfile:
           val_list = util.read_csv(val_listfile)
 
   print('Time Started')
   start = time.clock()
 
-  config = Config()
-
   helper = getModelHelper(config)
 
-  data = helper.load_and_preprocess_data(val_list)
+  data = helper.load_and_preprocess_test_data(val_list)
   i = 0
   for dataPoint in data[0]:
           request = predict_pb2.PredictRequest()
@@ -70,9 +72,9 @@ def main(_):
           resultD = json.loads(result)
           floatVal = resultD['outputs']['label']['floatVal']
           index = np.argmax(floatVal)
-          print ("Predicted %s Actual %s"%(LBLS[index], LBLS[int(val_list[i][1])]))
+          print ("File %s --> Predicted %s (Actual %s)"%(val_list[i][0],LBLS[index], LBLS[int(val_list[i][1])]))
           i += 1
-  print('Time Taken for 10 requests: ',time.clock() - start)
+  print('Time Taken for requests: ',time.clock() - start)
   return
 
 
