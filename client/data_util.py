@@ -53,9 +53,7 @@ class ModelHelper(object):
                     else:
                             for j in range(self.n_channels):
                                 im_data[i, j, :, :] = im_array[:self.y_features, :,j] / 256.0
-                    #print(np.shape(im_data))
-                    labels.append(LMAP[int(example[1])])
-            return im_data,labels
+            return im_data
 
     @classmethod
     def build(cls, data):
@@ -77,9 +75,9 @@ class ModelHelper(object):
     def load_and_preprocess_test_data(self,examples):
             
             # now process all the input data.
-            inputs,labels = self.vectorize(examples,False,True)
+            inputs = self.vectorize(examples,False,True)
             
-            return inputs,labels
+            return inputs
 
     def read_png(self,image,test):
             if test:

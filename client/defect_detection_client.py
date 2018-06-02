@@ -19,6 +19,7 @@ import json
 from pprint import pprint
 import time
 from google.protobuf.json_format import MessageToJson
+import csv
 
 
 tf.app.flags.DEFINE_string('server', '104.197.112.172:80',
@@ -46,13 +47,15 @@ def main(_):
   channel = implementations.insecure_channel(host, int(port))
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
   
-  val_list = None
+  val_list = []
   
   config = Config()
 
 
   with open(config.test_csv, "r") as val_listfile:
-          val_list = util.read_csv(val_listfile)
+          listF = val_listfile.readlines()
+          for lis in listF:
+              val_list.append((lis.strip("\n"),0))
 
   print('Time Started')
   start = time.clock()
@@ -61,7 +64,7 @@ def main(_):
 
   data = helper.load_and_preprocess_test_data(val_list)
   i = 0
-  for dataPoint in data[0]:
+  for dataPoint in data:
           request = predict_pb2.PredictRequest()
           request.model_spec.name = 'predict_defect'
           request.model_spec.signature_name = 'predict_defect'
@@ -72,7 +75,7 @@ def main(_):
           resultD = json.loads(result)
           floatVal = resultD['outputs']['label']['floatVal']
           index = np.argmax(floatVal)
-          print ("File %s --> Predicted %s (Actual %s)"%(val_list[i][0],LBLS[index], LBLS[int(val_list[i][1])]))
+          print ("File %s --> Prediction %s"%(val_list[i][0],LBLS[index]))
           i += 1
   print('Time Taken for requests: ',time.clock() - start)
   return
@@ -80,5 +83,3 @@ def main(_):
 
 if __name__ == '__main__':
   tf.app.run()
- 
-
